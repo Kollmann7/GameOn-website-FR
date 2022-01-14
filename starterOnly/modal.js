@@ -7,11 +7,12 @@ function editNav() {
   }
 }
 
-// DOM Elements
+// DOM Elements validate,commit,close
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalclose = document.querySelectorAll(".close");
+
 
 
 // launch modal event
@@ -28,3 +29,90 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+//DOM Elements FORM
+const form = document.getElementById("form");
+const firstName = document.getElementById('first-name');
+const lastName = document.getElementById('last-name');
+const birthDate = document.getElementById('birthdate');
+const email = document.getElementById('email');
+const quantityTournament = document.getElementById ('quantity');
+
+//First name verification
+function validateFirstName(){
+  const firstNameForm = document.getElementById("first-name-form");
+  if (firstName.value.trim() == ""){  
+    firstNameForm.setAttribute("data-error", "Le champ doit être remplis");
+    firstNameForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else if (firstName.value.trim().length < 2){
+    firstNameForm.setAttribute("data-error", "Le champ doit avoir plus de deux caractères");
+    firstNameForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else{
+    firstNameForm.setAttribute("data-error-visible","false");
+    return true;
+  }
+}
+
+//Last name verification
+function validateLastName(){
+  const lastNameForm = document.getElementById("last-name-form");
+  if (lastName.value.trim() == ""){
+    lastNameForm.setAttribute("data-error", "Le champ doit être remplis");
+    lastNameForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else if (lastName.value.trim().length < 2){
+    lastNameForm.setAttribute("data-error", "Le champ doit avoir plus de deux caractères");
+    lastNameForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else{
+    lastNameForm.setAttribute("data-error-visible","false");
+    return true;
+  }
+}
+
+//Email verification
+function validateEmail(){
+  const emailForm = document.getElementById("email-form");
+  if (email.value.trim() == ""){
+    emailForm.setAttribute("data-error", "Le champ doit être remplis");
+    emailForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else{
+    emailForm.setAttribute("data-error-visible","false");
+    return true;
+  }
+}
+
+//Birthday verification
+function validateBirthDay(){
+  const birthDateForm = document.getElementById("birthdate-form");
+  if (birthDate.value == ""){
+    birthDateForm.setAttribute("data-error", "Le champ doit être remplis");
+    birthDateForm.setAttribute("data-error-visible","true");
+  return false;
+  }
+  else{
+    birthDateForm.setAttribute("data-error-visible","false");
+    return true;
+  }
+}
+
+//Tournament verification
+function validateQuantityTournament(){
+  const tournamentForm = document.getElementById("tournament-form");
+  if (quantityTournament.value.trim()== ""){
+    tournamentForm.setAttribute("data-error", "Le champ doit être remplis");
+    tournamentForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else{
+    tournamentForm.setAttribute("data-error-visible","false");
+    return true;
+  }
+}
