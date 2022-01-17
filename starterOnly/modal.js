@@ -13,13 +13,16 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalclose = document.querySelectorAll(".close");
 const btnValidate = document.getElementById("validation-form");
+const modalValidate = document.getElementById("thanks");
+
 
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 modalclose.forEach((btn) => btn.addEventListener("click", closeModal));
-
+//Validation form event
+btnValidate.addEventListener('click', validate);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -28,7 +31,13 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
-
+function registerOpen(){
+  modalValidate.style.display = "block";
+}
+//function modal register close
+function registerClose(){
+  modalValidate.style.display = "none";
+}
 
 //DOM Elements FORM
 const form = document.getElementById("form");
@@ -137,4 +146,5 @@ function validate(e){
 //Function modal submit
 function modalSubmit(){
   closeModal();
+  registerOpen();
 }

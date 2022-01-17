@@ -58,7 +58,7 @@
           <div class="modal-body">
             <form name="reserve" action="index.html" method="get" onsubmit="submit();">
               <!--firstName-->
-              <div class="formData">
+              <div class="formData" id="first-name-form">
                 <label>Prénom</label><br>
                 <input class="text-control" type="text" id="first-name" name="first" minlength="2"/><br>
               </div>
@@ -133,6 +133,16 @@
           </div>
         </div>
       </div>
+      <section class="bground" id="thanks">
+        <div class="content">
+          <span class="close" id="thanks-close"></span>
+          <div class="modal-body thanks-bground">
+            <h3>Merci pour votre inscription !</h3>
+            <br>
+            <button id="btn-close-valid" class="btn-submit button" type="submit">Fermer</button>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
       <p class="copyrights">
