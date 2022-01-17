@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalclose = document.querySelectorAll(".close");
-
+const btnValidate = document.getElementById("validation-form");
 
 
 // launch modal event
@@ -28,6 +28,7 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
 
 //DOM Elements FORM
 const form = document.getElementById("form");
@@ -115,4 +116,25 @@ function validateQuantityTournament(){
     tournamentForm.setAttribute("data-error-visible","false");
     return true;
   }
+}
+
+
+function validate(e){
+  e.preventDefault();
+  const FirstNameValid = validateFirstName();
+  const LastNameValid = validateLastName();
+  const EmailValid = validateEmail();
+  const BirthDayValid = validateBirthDay();
+  const QuantityTournamentValid = validateQuantityTournament();
+  console.log();
+
+
+  if(FirstNameValid && LastNameValid && EmailValid && BirthDayValid && QuantityTournamentValid){
+    modalSubmit();
+  }
+}
+
+//Function modal submit
+function modalSubmit(){
+  closeModal();
 }
