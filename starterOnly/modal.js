@@ -52,11 +52,22 @@ const birthDate = document.getElementById('birthdate');
 const email = document.getElementById('email');
 const quantityTournament = document.getElementById ('quantity');
 
+//Regex
+const nameRegex = /^((?![0-9~!@#$%^&*()_+=-[]{};:"\/<>?]).)+$/;
+const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+const emailRegex = /^[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+const tournamentRegex = /^[0-9]+$/;
+
 //First name verification
 function validateFirstName(){
   const firstNameForm = document.getElementById("first-name-form");
   if (firstName.value.trim() == ""){  
     firstNameForm.setAttribute("data-error", "Le champ doit être remplis");
+    firstNameForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else if (!nameRegex.test(firstName.value)){
+    firstNameForm.setAttribute("data-error", "Le prénom ne respecte pas les caratères demandées");
     firstNameForm.setAttribute("data-error-visible","true");
     return false;
   }
@@ -79,6 +90,11 @@ function validateLastName(){
     lastNameForm.setAttribute("data-error-visible","true");
     return false;
   }
+  else if (!nameRegex.test(lastName.value)){
+    lastNameForm.setAttribute("data-error", "Le nom ne respecte pas les caratères demandées");
+    lastNameForm.setAttribute("data-error-visible","true");
+    return false;
+  }
   else if (lastName.value.trim().length < 2){
     lastNameForm.setAttribute("data-error", "Le champ doit avoir plus de deux caractères");
     lastNameForm.setAttribute("data-error-visible","true");
@@ -98,6 +114,11 @@ function validateEmail(){
     emailForm.setAttribute("data-error-visible","true");
     return false;
   }
+  else if (!emailRegex.test (email.value)){
+    emailForm.setAttribute("data-error", "Vous devez renseignez une adrresse mail vailde");
+    emailForm.setAttribute("data-error-visible","true");
+    return false;
+  }
   else{
     emailForm.setAttribute("data-error-visible","false");
     return true;
@@ -112,6 +133,11 @@ function validateBirthDay(){
     birthDateForm.setAttribute("data-error-visible","true");
   return false;
   }
+  else if (!dateRegex.test (birthDate.value)){
+    birthDateForm.setAttribute("data-error", "Vous devez renseignez une date valide");
+    birthDateForm.setAttribute("data-error-visible","true");
+  return false;
+  }
   else{
     birthDateForm.setAttribute("data-error-visible","false");
     return true;
@@ -123,6 +149,11 @@ function validateQuantityTournament(){
   const tournamentForm = document.getElementById("tournament-form");
   if (quantityTournament.value.trim()== ""){
     tournamentForm.setAttribute("data-error", "Le champ doit être remplis");
+    tournamentForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else if (!tournamentRegex.test(quantityTournament.value)){
+    tournamentForm.setAttribute("data-error", "Le champ doit comporter seulement des chiffres");
     tournamentForm.setAttribute("data-error-visible","true");
     return false;
   }
