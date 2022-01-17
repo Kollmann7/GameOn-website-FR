@@ -53,6 +53,8 @@ const email = document.getElementById('email');
 const quantityTournament = document.getElementById ('quantity');
 const checkBoxes = document.querySelectorAll(".loc-checkboxes");
 const arrayBoxes = Array.from (checkBoxes);
+const conditions = document.querySelectorAll('.con-checkboxes');
+const arrayConditions = Array.from (conditions);
 
 //Regex
 const nameRegex = /^((?![0-9~!@#$%^&*()_+=-[]{};:"\/<>?]).)+$/;
@@ -183,7 +185,20 @@ function validateCheckBoxes(){
     locationForm.setAttribute("data-error-visible","false");
     return true;
   }
-}    
+}
+// Validation conditions
+
+function validateConditions(){
+  const conditionForm = document.getElementById("condition-form");
+  if(!arrayConditions.some(isChecked)){
+    conditionForm.setAttribute("data-error", "Vous devez accepter les conditions");
+    conditionForm.setAttribute("data-error-visible","true");
+  }
+  else{
+    conditionForm.setAttribute("data-error-visible","false");
+    return true;
+  }
+}
 
 function validate(e){
   e.preventDefault();
@@ -193,10 +208,9 @@ function validate(e){
   const BirthDayValid = validateBirthDay();
   const QuantityTournamentValid = validateQuantityTournament();
   const CheckBoxesValid = validateCheckBoxes();
+  const ConditionsValid = validateConditions();
 
-
-
-  if(FirstNameValid && LastNameValid && EmailValid && BirthDayValid && QuantityTournamentValid && CheckBoxesValid){
+  if(FirstNameValid && LastNameValid && EmailValid && BirthDayValid && QuantityTournamentValid && CheckBoxesValid && ConditionsValid){
     modalSubmit();
   }
 }
