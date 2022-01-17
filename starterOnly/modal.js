@@ -51,6 +51,8 @@ const lastName = document.getElementById('last-name');
 const birthDate = document.getElementById('birthdate');
 const email = document.getElementById('email');
 const quantityTournament = document.getElementById ('quantity');
+const checkBoxes = document.querySelectorAll(".loc-checkboxes");
+const arrayBoxes = Array.from (checkBoxes);
 
 //Regex
 const nameRegex = /^((?![0-9~!@#$%^&*()_+=-[]{};:"\/<>?]).)+$/;
@@ -163,6 +165,25 @@ function validateQuantityTournament(){
   }
 }
 
+//Check verification of the checkboxes
+function isChecked(checkBoxe){
+  return checkBoxe.checked;
+  
+};
+
+//Validation checkboxes
+function validateCheckBoxes(){
+  const locationForm = document.getElementById("location-form");
+  if (!arrayBoxes.some(isChecked)){
+    locationForm.setAttribute("data-error", "Vous devez remplir au moins une case");
+    locationForm.setAttribute("data-error-visible","true");
+    return false;
+  }
+  else{
+    locationForm.setAttribute("data-error-visible","false");
+    return true;
+  }
+}    
 
 function validate(e){
   e.preventDefault();
@@ -171,10 +192,11 @@ function validate(e){
   const EmailValid = validateEmail();
   const BirthDayValid = validateBirthDay();
   const QuantityTournamentValid = validateQuantityTournament();
-  console.log();
+  const CheckBoxesValid = validateCheckBoxes();
 
 
-  if(FirstNameValid && LastNameValid && EmailValid && BirthDayValid && QuantityTournamentValid){
+
+  if(FirstNameValid && LastNameValid && EmailValid && BirthDayValid && QuantityTournamentValid && CheckBoxesValid){
     modalSubmit();
   }
 }
