@@ -14,7 +14,8 @@ const formData = document.querySelectorAll(".formData");
 const modalclose = document.querySelectorAll(".close");
 const btnValidate = document.getElementById("validation-form");
 const modalValidate = document.getElementById("thanks");
-
+const closeRegister = document.getElementById("btn-close-valid");
+const closeThanks = document.getElementById("thanks-close");
 
 
 // launch modal event
@@ -38,6 +39,10 @@ function registerOpen(){
 function registerClose(){
   modalValidate.style.display = "none";
 }
+
+//close register
+closeRegister.addEventListener('click', registerClose);
+closeThanks.addEventListener('click', registerClose);
 
 //DOM Elements FORM
 const form = document.getElementById("form");
