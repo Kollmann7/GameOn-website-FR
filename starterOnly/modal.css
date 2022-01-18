@@ -333,6 +333,18 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+/*Thanks Modal*/
+.thanks-bground{
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#btn-close-valid{
+  position: absolute;
+  bottom: 30px;
+}
 /* custom select styles */
 .custom-select {
   position: relative;
