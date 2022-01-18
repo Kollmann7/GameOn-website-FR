@@ -128,7 +128,11 @@ function validateEmail(){
     return true;
   }
 }
-
+//Birthday today date
+function isBeforeToday(birthDate) {
+  let today = new Date();
+  return birthDate <= today;
+}
 //Birthday verification
 function validateBirthDay(){
   const birthDateForm = document.getElementById("birthdate-form");
@@ -141,6 +145,14 @@ function validateBirthDay(){
     birthDateForm.setAttribute("data-error", "Vous devez renseignez une date valide");
     birthDateForm.setAttribute("data-error-visible","true");
   return false;
+  }
+  else if (!isBeforeToday(new Date(birthDate.value))){
+    birthDateForm.setAttribute("data-error", "La date doit être antérieur a celle d'aujourd'hui");
+    birthDateForm.setAttribute("data-error-visible","true");
+  }
+  else if (new Date(birthDate.value) < new Date(1900, 01, 01)){
+    birthDateForm.setAttribute("data-error", "La date doit être supérieur a 1900");
+    birthDateForm.setAttribute("data-error-visible","true");
   }
   else{
     birthDateForm.setAttribute("data-error-visible","false");
@@ -170,9 +182,7 @@ function validateQuantityTournament(){
 //Check verification of the checkboxes
 function isChecked(checkBoxe){
   return checkBoxe.checked;
-  
 };
-
 //Validation checkboxes
 function validateCheckBoxes(){
   const locationForm = document.getElementById("location-form");
