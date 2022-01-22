@@ -71,7 +71,7 @@ function validateFirstName(){
     return false;
   }
   else if (!nameRegex.test(firstName.value)){
-    firstNameForm.setAttribute("data-error", "Le prénom ne respecte pas les caratères demandées");
+    firstNameForm.setAttribute("data-error", "Le prénom ne respecte pas les caratères demandés");
     firstNameForm.setAttribute("data-error-visible","true");
     return false;
   }
@@ -95,7 +95,7 @@ function validateLastName(){
     return false;
   }
   else if (!nameRegex.test(lastName.value)){
-    lastNameForm.setAttribute("data-error", "Le nom ne respecte pas les caratères demandées");
+    lastNameForm.setAttribute("data-error", "Le nom ne respecte pas les caratères demandés");
     lastNameForm.setAttribute("data-error-visible","true");
     return false;
   }
