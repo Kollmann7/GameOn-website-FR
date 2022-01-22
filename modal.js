@@ -128,6 +128,7 @@ function validateEmail(){
     return true;
   }
 }
+
 //Birthday today date
 function isBeforeToday(birthDate) {
   let today = new Date();
@@ -147,11 +148,10 @@ function validateBirthDay(){
   return false;
   }
   else if (!isBeforeToday(new Date(birthDate.value))){
-    birthDateForm.setAttribute("data-error", "La date doit être antérieur a celle d'aujourd'hui");
-    birthDateForm.setAttribute("data-error-visible","true");
+    birthDateForm.setAttribute("data-error", "La date doit être antérieur a celle d'aujourd'hui");      //We choose to stop the birthdate before today because we don't want "unvalid" birhtdate
   }
   else if (new Date(birthDate.value) < new Date(1900, 01, 01)){
-    birthDateForm.setAttribute("data-error", "La date doit être supérieur a 1900");
+    birthDateForm.setAttribute("data-error", "La date doit être supérieur a 1900");                     //We choose this date as minimun because it's we be unlikly to have a people that older than that
     birthDateForm.setAttribute("data-error-visible","true");
   }
   else{
@@ -196,8 +196,8 @@ function validateCheckBoxes(){
     return true;
   }
 }
-// Validation conditions
 
+// Validation conditions
 function validateConditions(){
   const conditionForm = document.getElementById("condition-form");
   if(!arrayConditions.some(isChecked)){
