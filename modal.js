@@ -149,10 +149,13 @@ function validateBirthDay(){
   }
   else if (!isBeforeToday(new Date(birthDate.value))){
     birthDateForm.setAttribute("data-error", "La date doit être antérieur à celle d'aujourd'hui");      //We choose to stop the birthdate before today because we don't want "unvalid" birhtdate
-  }
+    birthDateForm.setAttribute("data-error-visible","true");
+    return false;
+  }        
   else if (new Date(birthDate.value) < new Date(1900, 01, 01)){
     birthDateForm.setAttribute("data-error", "La date doit être supérieur à 1900");                     //We choose this date as minimun because it's we be unlikly to have a people that older than that
     birthDateForm.setAttribute("data-error-visible","true");
+    return false;
   }
   else{
     birthDateForm.setAttribute("data-error-visible","false");
@@ -203,6 +206,7 @@ function validateConditions(){
   if(!arrayConditions.some(isChecked)){
     conditionForm.setAttribute("data-error", "Vous devez accepter les conditions");
     conditionForm.setAttribute("data-error-visible","true");
+    return false;
   }
   else{
     conditionForm.setAttribute("data-error-visible","false");
